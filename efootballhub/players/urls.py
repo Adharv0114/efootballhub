@@ -9,9 +9,11 @@ urlpatterns = [
     path('search/', lambda request: render(request, 'players/search.html'), name='player_search_page'),
     path('compare/', lambda request: render(request, 'players/compare.html'), name='compare_page'),
     path('squad/', lambda request: render(request, 'players/squad.html'), name='squad_page'),
-    path('create/', create_player, name='create_player'),
+    path('create/', lambda request: render(request, 'players/create_player.html'), name='create_page'),
+    path('players/create/', create_player, name='create_player'),
     path('players/', player_list, name='player_list'),
     path('players/<int:player_id>/', player_detail, name='player_detail'),
     path('players/<int:player_id>/edit/', edit_player, name='edit_player'),
+    path('players/<int:player_id>/delete/', delete_player, name='delete_player'),
     path('players/<int:player_id>/delete/', delete_player, name='delete_player'),
 ]
