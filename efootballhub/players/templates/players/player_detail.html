@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ player.name }} - Player Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">{{ player.name }}</h1>
+        <h3 class="text-center">{{ player.position }} - {{ player.team }}</h3>
+        
+        <table class="table table-bordered mt-4">
+            <tr>
+                <th>Best Position</th>
+                <td>{{ player.best_position }}</td>
+            </tr>
+            <tr>
+                <th>Max Rating</th>
+                <td>{{ player.max_rating }}</td>
+            </tr>
+            <tr>
+                <th>Base Rating</th>
+                <td>{{ player.base_rating }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ player.country }}</td>
+            </tr>
+            <tr>
+                <th>Playing Style</th>
+                <td>{{ player.playing_style }}</td>
+            </tr>
+            <tr>
+                <th>Height</th>
+                <td>{{ player.height }} cm</td>
+            </tr>
+            <tr>
+                <th>Weight</th>
+                <td>{{ player.weight }} kg</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ player.age }}</td>
+            </tr>
+            <tr>
+                <th>Foot</th>
+                <td>{{ player.foot }}</td>
+            </tr>
+        </table>
+
+        <h3>Game Attributes</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Attribute</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td rowspan="10"><strong>Attacking</strong></td><td>Offensive Awareness</td><td>{{ player.offensive_awareness }}</td></tr>
+                <tr><td>Ball Control</td><td>{{ player.ball_control }}</td></tr>
+                <tr><td>Dribbling</td><td>{{ player.dribbling }}</td></tr>
+                <tr><td>Tight Possession</td><td>{{ player.tight_possession }}</td></tr>
+                <tr><td>Low Pass</td><td>{{ player.low_pass }}</td></tr>
+                <tr><td>Lofted Pass</td><td>{{ player.lofted_pass }}</td></tr>
+                <tr><td>Finishing</td><td>{{ player.finishing }}</td></tr>
+                <tr><td>Heading</td><td>{{ player.heading }}</td></tr>
+                <tr><td>Place Kicking</td><td>{{ player.place_kicking }}</td></tr>
+                <tr><td>Curl</td><td>{{ player.curl }}</td></tr>
+
+                <tr><td rowspan="9"><strong>Defending</strong></td><td>Defensive Awareness</td><td>{{ player.defensive_awareness }}</td></tr>
+                <tr><td>Defensive Engagement</td><td>{{ player.defensive_engagement }}</td></tr>
+                <tr><td>Tackling</td><td>{{ player.tackling }}</td></tr>
+                <tr><td>Aggression</td><td>{{ player.aggression }}</td></tr>
+                <tr><td>Goalkeeping</td><td>{{ player.goalkeeping }}</td></tr>
+                <tr><td>GK Catching</td><td>{{ player.gk_catching }}</td></tr>
+                <tr><td>GK Parrying</td><td>{{ player.gk_parrying }}</td></tr>
+                <tr><td>GK Reflexes</td><td>{{ player.gk_reflexes }}</td></tr>
+                <tr><td>GK Reach</td><td>{{ player.gk_reach }}</td></tr>
+
+                <tr><td rowspan="10"><strong>Athleticism</strong></td><td>Speed</td><td>{{ player.speed }}</td></tr>
+                <tr><td>Acceleration</td><td>{{ player.acceleration }}</td></tr>
+                <tr><td>Kicking Power</td><td>{{ player.kicking_power }}</td></tr>
+                <tr><td>Jump</td><td>{{ player.jump }}</td></tr>
+                <tr><td>Physical Contact</td><td>{{ player.physical_contact }}</td></tr>
+                <tr><td>Balance</td><td>{{ player.balance }}</td></tr>
+                <tr><td>Stamina</td><td>{{ player.stamina }}</td></tr>
+                <tr><td>Weak Foot Usage</td><td>{{ player.weak_foot_usage }}</td></tr>
+                <tr><td>Weak Foot Accuracy</td><td>{{ player.weak_foot_accuracy }}</td></tr>
+                <tr><td>Form</td><td>{{ player.form }}</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Skills</h3>
+        <ul>
+            {% for skill in player.skills %}
+                <li>{{ skill }}</li>
+            {% empty %}
+                <li>No skills assigned</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'edit_player' player.id %}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'delete_player' player.id %}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'player_list' %}" class="btn btn-secondary">Back to Player List</a>
+    </div>
+</body>
+</html>
